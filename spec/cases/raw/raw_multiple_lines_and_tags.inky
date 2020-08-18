@@ -1,0 +1,9 @@
+<div>
+  <raw>
+    <<LCG ProgramTG LCG Coupon Code Default='246996'>>
+  </raw>
+  <button href="#">Test</button>
+  <raw>
+    <asdf>more raw content</asdf>
+  </raw>
+</div>

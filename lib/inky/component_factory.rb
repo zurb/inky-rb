@@ -93,7 +93,7 @@ module Inky
       classes << ' first' unless component.previous_element
       classes << ' last' unless component.next_element
 
-      subrows = component.elements.css(".row").to_a.concat(component.elements.css("row").to_a)
+      subrows = component.children.css(".row").to_a.concat(component.children.css("row").to_a)
       expander = %{<th class="expander"></th>} if large_size.to_i == column_count && subrows.empty?
 
       %{<#{INTERIM_TH_TAG} class="#{classes}" #{_pass_through_attributes(component)}><table><tr><th>#{inner}</th>#{expander}</tr></table></#{INTERIM_TH_TAG}>}
@@ -107,10 +107,10 @@ module Inky
     def _transform_center(component, _inner)
       # NOTE:  Using children instead of elements because elements.to_a
       # sometimes appears to miss elements that show up in size
-      component.elements.each do |child|
+      component.children.each do |child|
         child['align'] = 'center'
         child['class'] = _combine_classes(child, 'float-center')
-        items = component.elements.css(".menu-item").to_a.concat(component.elements.css("item").to_a)
+        items = component.children.css(".menu-item").to_a.concat(component.children.css("item").to_a)
         items.each do |item|
           item['class'] = _combine_classes(item, 'float-center')
         end
